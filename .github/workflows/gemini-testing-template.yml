@@ -86,7 +86,7 @@ jobs:
                   ],
                   "includeTools": [
                     "pull_request_read",
-                    "issue_comment_write"
+                    "add_issue_comment"
                   ],
                   "env": {
                     "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
@@ -211,7 +211,7 @@ jobs:
 
             ### Step 3: Post the Testing Plan
 
-            1. **Create Comment:** Call `mcp__github__create_issue_comment` to post the testing plan as a comment on the Pull Request.
+            1. **Create Comment:** Call `mcp__github__add_issue_comment` to post the testing plan as a comment on the Pull Request.
 
             2. **Comment Format:** The comment **MUST** start with a header and follow this structure:
 
