@@ -97,6 +97,10 @@ jobs:
               core.setOutput('command', 'review');
               const additionalContext = request.replace(/^@gemini-cli \/review/, '').trim();
               core.setOutput('additional_context', additionalContext);
+            } else if (request.startsWith("@gemini-cli /testing-template")) {
+              core.setOutput('command', 'testing-template');
+              const additionalContext = request.replace(/^@gemini-cli \/testing-template/, '').trim();
+              core.setOutput('additional_context', additionalContext);
             } else if (request.startsWith("@gemini-cli /triage")) {
               core.setOutput('command', 'triage');
             } else if (request.startsWith("@gemini-cli")) {
@@ -128,6 +132,20 @@ jobs:
     if: |-
       ${{ needs.dispatch.outputs.command == 'review' }}
     uses: './.github/workflows/gemini-review.yml'
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+      issues: 'write'
+      pull-requests: 'write'
+    with:
+      additional_context: '${{ needs.dispatch.outputs.additional_context }}'
+    secrets: 'inherit'
+
+  testing-template:
+    needs: 'dispatch'
+    if: |-
+      ${{ needs.dispatch.outputs.command == 'testing-template' }}
+    uses: './.github/workflows/gemini-testing-template.yml'
     permissions:
       contents: 'read'
       id-token: 'write'
@@ -169,6 +187,7 @@ jobs:
     needs:
       - 'dispatch'
       - 'review'
+      - 'testing-template'
 #      - 'triage'
 #      - 'invoke'
     if: |-
