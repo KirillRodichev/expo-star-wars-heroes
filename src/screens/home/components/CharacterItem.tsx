@@ -12,7 +12,7 @@ interface CharacterItemProps {
 export const CharacterItem: React.FC<CharacterItemProps> = ({ character, onPress, testID }) => {
   const itemTestID = testID || 'character-item';
   const testIDs = useTestIDs(itemTestID, ['name', 'details', 'arrow']);
-  
+
   return (
     <TouchableOpacity
       style={styles.characterItem}
@@ -26,6 +26,9 @@ export const CharacterItem: React.FC<CharacterItemProps> = ({ character, onPress
         <Text style={styles.characterName} testID={testIDs.name}>{character.name}</Text>
         <Text style={styles.characterDetails} testID={testIDs.details}>
           {character.birth_year} • {character.gender}
+        </Text>
+        <Text style={styles.characterDetails} testID={testIDs.details}>
+          {character.eye_color} • {character.mass} kg
         </Text>
       </View>
       <View style={styles.characterArrow}>
