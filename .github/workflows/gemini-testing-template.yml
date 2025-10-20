@@ -192,7 +192,8 @@ jobs:
 
             **3. 🔄 Regression Testing Areas**
 
-            - List all existing features and functionality that might be affected by this change
+            - List all existing features and functionality that are affected by this change
+            - Do **not** include unrelated features or generic regression suggestions.
             - Identify components that share code or dependencies with the changed code
             - Create a checklist of regression tests to ensure nothing broke
             - Use checkbox format: `- [ ] Regression test description`
@@ -215,10 +216,7 @@ jobs:
 
             2. **Comment Format:** The comment **MUST** start with a header and follow this structure:
 
-                <TESTING_PLAN>
-                # 🧪 Testing Plan
-
-                > This testing plan was automatically generated to help QA team test this Pull Request effectively.
+                # 🧪 Testing Details
 
                 ## 📊 Overview of Changes for QA
 
@@ -239,7 +237,6 @@ jobs:
                 ---
 
                 **Questions or need clarification?** Please ask the PR author or tag the development team.
-                </TESTING_PLAN>
 
             -----
 
